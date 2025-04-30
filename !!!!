@@ -1,0 +1,38 @@
+javascript:
+(function(){
+    var cookie = document.cookie;
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires + "; path=blooket.com";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+        }
+        return "";
+    }
+
+    if (getCookie("CryptoPacks") != "") {
+        var cryptoPacks = parseInt(getCookie("CryptoPacks"));
+        cryptoPacks += 5000;
+        setCookie("CryptoPacks", cryptoPacks, 30);
+        alert("You now have " + cryptoPacks + " crypto packs!");
+    } else {
+        setCookie("CryptoPacks", 5000, 30);
+        alert("You now have 5000 crypto packs!");
+    }
+
+    var cryptoBalance = getCookie("cryptoBalance") ? getCookie("cryptoBalance") : 0;
+    var cryptoPacks = getCookie("CryptoPacks") ? getCookie("CryptoPacks") : 1;
+    var cryptoBalanceTotal = parseInt(cryptoBalance) + (cryptoPacks * 500);
+    document.getElementById("cryptoBalance").innerHTML = cryptoBalanceTotal.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    var request = new XMLHttpRequest();
+    request.open('GET', '<a href="https://blooket.com/api/grandma'," target="_blank" rel="noopener noreferrer">https://blooket.com/api/grandma',</a> true);
+    request.
